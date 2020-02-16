@@ -1,5 +1,6 @@
 library(dplyr)
 library(ggplot2)
+library(plotly)
 
 # Define server logic
 server <- function(input, output, session) {
@@ -19,6 +20,7 @@ server <- function(input, output, session) {
       geom_abline(intercept = input$theta0, slope = input$theta1) + 
       labs(title="Linear Regresion", x = input$variable1, y = input$variable2)
     
+    p <- ggplotly(p)
     print(p)
   })
   

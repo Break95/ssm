@@ -40,32 +40,32 @@ ui <- dashboardPagePlus(
               tabsetPanel(type = "tabs", 
                   # SRL - App ----
                   tabPanel("App", # Select data
-                    sidebarLayout(
-                      sidebarPanel(
-                        hr(),
-                        selectInput("dataset", "Choose a dataset:", c('longley', 'BostonHousing', 'abelone')),
-                        uiOutput("variable"),
-                        uiOutput("objective"),
-                        fluidRow(
-                          column(4,
-                                 numericInput("theta0", "t0:", 0)),
-                          column(4,
-                                 numericInput("theta1", "t1:", 0)),
-                          column(4,
-                                 numericInput("learnRate", HTML("&alpha;:") , 0.05 ))
-                        )
-                      ),
-                      
-                      mainPanel(
-                        plotOutput("plot")
-                      )
-                    ),
-                    hr(),
-                    actionButton("step", "Step"),
-                    actionButton("slowSteps", "Slow Steps"),
-                    actionButton("final", "Final"),
-                    textOutput("error")
-                  ),
+                          br(),
+                          sidebarLayout(
+                            sidebarPanel(
+                              selectInput("dataset", "Choose a dataset:", c('longley', 'BostonHousing', 'abelone')),
+                              uiOutput("variable"),
+                              uiOutput("objective"),
+                              fluidRow(
+                                column(4,
+                                       numericInput("theta0", "t0:", 0)),
+                                column(4,
+                                       numericInput("theta1", "t1:", 0)),
+                                column(4,
+                                       numericInput("learnRate", HTML("&alpha;:") , 0.05 ))
+                              )
+                            ),
+                            
+                            mainPanel(
+                              plotOutput("plot")
+                            )
+                          ),
+                          hr(),
+                          actionButton("step", "Step"),
+                          actionButton("slowSteps", "Slow Steps"),
+                          actionButton("final", "Final"),
+                          textOutput("error")
+                        ),
                   # SLR - Notes ----
                   tabPanel("Notes", verbatimTextOutput("Summary"))
               )
